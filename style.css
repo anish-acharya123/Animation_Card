@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 * {
   padding: 0;
@@ -48,7 +48,7 @@ body {
   overflow: hidden;
 }
 
-.card.active {
+.card {
   background-color: #c33241;
   overflow: hidden;
   width: 35rem;
@@ -63,7 +63,7 @@ body {
   position: relative;
 }
 
-.active .card-btn {
+.card-btn {
   border: none;
   background-color: transparent;
   text-align: right;
@@ -73,7 +73,7 @@ body {
   position: relative;
 }
 
-.active .card-tools {
+.card-tools {
   display: flex;
   justify-content: space-between;
   padding: 0 2rem;
@@ -128,7 +128,6 @@ body {
 /* /// inactive card  */
 
 .inactive.card {
-  background-color: #f9ebec;
   width: 15rem;
   border-radius: 1rem;
   color: #c33241;
@@ -137,6 +136,9 @@ body {
   position: relative;
 }
 
+.inactive.card.card-bg {
+  background-color: #f9ebec;
+}
 .inactive .card-btn {
   display: none;
 }
@@ -152,7 +154,16 @@ body {
   cursor: pointer;
 }
 
-.inactive .card-textarea {
+.card-info-animation {
+  display: flex;
+  gap: 3rem;
+  padding: 0 2rem;
+  position: relative;
+}
+
+
+
+.inactive .card-info-area .card-textarea {
   writing-mode: vertical-rl;
   rotate: calc(180deg);
 }
@@ -181,7 +192,6 @@ body {
 
 .bg-overlay {
   position: absolute;
-  background-color: #f9ebec;
   height: 100%;
   width: 100%;
   top: auto;
@@ -189,34 +199,68 @@ body {
   bottom: 0;
   left: 0;
   border-radius: 1rem;
-  animation: bgcolor 0.4s forwards;
-  /* border-top-right-radius: 90%; */
+  animation: bgcolor 0.8s forwards;
+}
+
+.card-tools-animation {
+  animation: toolsOut 0.2s forwards;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  gap: 2rem;
+  position: relative;
+}
+
+@keyframes toolsOut {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(200px, 0);
+    display: none;
+  }
+}
+
+.card-btn-animation {
+  border: none;
+  background-color: transparent;
+  text-align: right;
+  color: #f9ebec;
+  font-weight: 600;
+  font-size: 0.9rem;
+  position: relative;
 }
 
 /* ///// animation  from inactive to active  */
 
 .bg-overlay-active {
   position: absolute;
-  background-color: #f9ebec;
+
   height: 100%;
   width: 100%;
   top: auto;
   right: auto;
   bottom: 0;
   left: 0;
-  border-radius: 1rem;
-  animation: bgcolor 0.4s forwards reverse;
+  animation: bgcolor 0.8s forwards reverse;
 }
 
 @keyframes bgcolor {
   0% {
     height: 0;
     width: 0;
-    border-radius: 20rem;
+    border-bottom-left-radius: 0rem;
+    border-top-left-radius: 20rem;
+    border-top-right-radius: 20rem;
+    border-bottom-right-radius: 20rem;
   }
 
   100% {
     border-radius: 1rem;
+    height: 100%;
+    width: 100%;
+
     transform: scale(1.3);
+    background-color: #f9ebec;
   }
 }
