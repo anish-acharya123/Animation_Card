@@ -111,8 +111,9 @@ body {
 .active .card-info-area .card-textarea {
   animation: textarea-reverse 0.5s forwards;
   position: absolute;
-  right: -7rem;
-  top: -18rem;
+  right: 0rem;
+  top: -10rem;
+  /* transform: rotate(0deg); */
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -120,8 +121,8 @@ body {
 
 @keyframes textarea-reverse {
   0% {
-    right: -7rem;
-    top: -18rem;
+    right: 0rem;
+    top: -10rem;
     transform: rotate(-90deg);
   }
 
@@ -129,6 +130,7 @@ body {
     right: 4rem;
     top: 0;
     transform: rotate(0deg);
+    /* background-color: black; */
   }
 }
 
@@ -139,7 +141,7 @@ body {
 
 .active .card-info-area .card-textarea .card-desc {
   text-align: left;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 /* /// inactive card  */
@@ -211,7 +213,9 @@ body {
 .card-info-animation .card-textarea {
   animation: textarea 0.5s forwards;
   position: absolute;
-  right: 0rem;
+  right: 4rem;
+  top: 0;
+  transform: rotate(0deg);
 }
 @keyframes textarea {
   0% {
@@ -221,9 +225,6 @@ body {
 
   20% {
     transform: rotate(5deg);
-  }
-  30% {
-    /* transform: rotate(0deg); */
   }
 
   100% {
@@ -272,25 +273,6 @@ body {
   animation: bgcolor 0.8s forwards;
 }
 
-.card-tools-animation {
-  /* animation: toolsOut 0.2s forwards;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
-  gap: 2rem;
-  position: relative; */
-}
-
-@keyframes toolsOut {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(200px, 0);
-    display: none;
-  }
-}
-
 .card-btn-animation {
   border: none;
   background-color: transparent;
@@ -320,17 +302,19 @@ body {
     height: 0;
     width: 0;
     border-bottom-left-radius: 0rem;
-    border-top-left-radius: 20rem;
-    border-top-right-radius: 20rem;
-    border-bottom-right-radius: 20rem;
+    border-top-left-radius: 90%;
+    border-top-right-radius: 90%;
+    border-bottom-right-radius: 90%;
   }
 
   100% {
-    border-radius: 1rem;
+        border-top-left-radius: 90%;
+    border-top-right-radius: 90%;
+    border-bottom-right-radius: 90%;
     height: 100%;
     width: 100%;
 
-    transform: scale(1.3);
+    transform: scale(1.5);
     background-color: #f9ebec;
   }
 }
