@@ -1,7 +1,6 @@
 let activeCard = document.getElementById("card1");
 let cards = document.getElementsByClassName("card");
-
-// let overlay_bg = document.getElementsByClassName("bg-color");
+console.log(cards);
 
 for (let card of cards) {
   if (!card.classList.contains("active")) {
@@ -9,24 +8,40 @@ for (let card of cards) {
   }
 
   card.addEventListener("click", () => {
+    let activeCardTool = activeCard.querySelector(".card-tools");
     let currentActiveBg = activeCard.querySelector(".bg-none"); // Get the bg-none inside the active card
     let nextActiveBg = card.querySelector(".bg-none");
     let BeforeInactiveBtn = activeCard.querySelector(".card-btn");
     let BeforeInactiveTools = activeCard.querySelector(".card-tools");
 
     let nextActiveText = activeCard.querySelector(".card-info-area");
-    //from inactive card
-    // let afterInactiveBtn = card
 
-    // activeCard.classList.remove("card-bg");
+    let nextActiveCardTool = card.querySelector(".card-tools");
+
     let previousCard;
 
     if (card.classList.contains("inactive")) {
+      if (
+        (card === cards[1] && activeCard === cards[0]) ||
+        (card === cards[2] && activeCard === cards[1]) ||
+        (card === cards[2] && activeCard === cards[0])
+      ) {
+        activeCardTool.classList.add("transition-left-out", "transition");
+        nextActiveCardTool.classList.add("transition-left-in");
+      } else if (
+        (card === cards[1] && activeCard === cards[2]) ||
+        (card === cards[0] && activeCard === cards[1]) ||
+        (card === cards[0] && activeCard === cards[2])
+      ) {
+        activeCardTool.classList.add("transition-right-out", "transition");
+        nextActiveCardTool.classList.add("transition-right-in");
+      }
       nextActiveText.classList.remove("card-info-area");
       nextActiveText.classList.add("card-info-animation");
 
-      BeforeInactiveTools.classList.remove("card-tools");
-      BeforeInactiveTools.classList.add("card-tools-animation");
+      // BeforeInactiveTools.classList.remove("card-tools");
+      // BeforeInactiveTools.classList.add("card-tools-animation");
+      activeCardTool.classList.remove("card-tools");
 
       BeforeInactiveBtn.classList.remove("card-btn");
       BeforeInactiveBtn.classList.add("card-btn-animation");
@@ -47,7 +62,7 @@ for (let card of cards) {
       activeCard = card;
     }
 
-    // if(card.classList.contains(""))
+  
     setTimeout(() => {
       currentActiveBg.classList.remove("bg-overlay");
       currentActiveBg.classList.add("bg-none");
@@ -55,22 +70,27 @@ for (let card of cards) {
       nextActiveBg.classList.remove("bg-overlay-active");
       nextActiveBg.classList.add("bg-none");
 
-      // in to out btn and tools animation
-      // BeforeInactiveBtn.style.display = "none";
-           BeforeInactiveBtn.classList.remove("card-btn-animation");
-           BeforeInactiveBtn.classList.add("card-btn");
+   
 
+      activeCardTool.classList.remove("transition-left-out");
+      nextActiveCardTool.classList.remove("transition-left-in");
+
+      activeCardTool.classList.remove("transition-right-out");
+      nextActiveCardTool.classList.remove("transition-right-in");
+    }, 1000);
+
+    setTimeout(() => {
+      BeforeInactiveBtn.classList.remove("card-btn-animation");
+      BeforeInactiveBtn.classList.add("card-btn");
       nextActiveText.classList.remove("card-info-animation");
       nextActiveText.classList.add("card-info-area");
-    }, 1000);
+    }, 500);
 
     setTimeout(() => {
       card.classList.remove("card-bg");
 
-      // Remove 'card-bg' from the previous active card after the animation ends
       previousCard.classList.add("card-bg");
-
- 
+      activeCardTool.classList.remove("transition");
 
       BeforeInactiveTools.classList.remove("card-tools-animation");
       BeforeInactiveTools.classList.add("card-tools");
