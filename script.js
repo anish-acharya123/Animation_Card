@@ -55,13 +55,10 @@ for (let card of cards) {
       nextActiveBg.classList.remove("bg-overlay-active");
       nextActiveBg.classList.add("bg-none");
 
-      BeforeInactiveTools.classList.remove("card-tools-animation");
-      BeforeInactiveTools.classList.add("card-tools");
-
       // in to out btn and tools animation
       // BeforeInactiveBtn.style.display = "none";
-      BeforeInactiveBtn.classList.remove("card-btn-animation");
-      BeforeInactiveBtn.classList.add("card-btn");
+           BeforeInactiveBtn.classList.remove("card-btn-animation");
+           BeforeInactiveBtn.classList.add("card-btn");
 
       nextActiveText.classList.remove("card-info-animation");
       nextActiveText.classList.add("card-info-area");
@@ -72,6 +69,11 @@ for (let card of cards) {
 
       // Remove 'card-bg' from the previous active card after the animation ends
       previousCard.classList.add("card-bg");
+
+ 
+
+      BeforeInactiveTools.classList.remove("card-tools-animation");
+      BeforeInactiveTools.classList.add("card-tools");
     }, 500);
   });
 }

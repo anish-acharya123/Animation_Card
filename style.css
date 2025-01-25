@@ -43,7 +43,6 @@ body {
   gap: 1.5rem;
 }
 /* // active class cass  */
-
 .card {
   overflow: hidden;
 }
@@ -155,13 +154,64 @@ body {
 }
 
 .card-info-animation {
+  /* background-color: blue; */
   display: flex;
-  gap: 3rem;
-  padding: 0 2rem;
+  /* gap: 2rem; */
+  /* padding: 2rem 0 0 0; */
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
+.card-info-animation .card-textarea .card-title {
+  animation: titleanimation 0.6s forwards;
+}
 
+@keyframes titleanimation {
+  0% {
+  }
+  100% {
+    color: #c33241;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
+.card-info-animation .card-textarea .card-desc {
+  animation: carddecs 0.5s forwards;
+}
+
+@keyframes carddecs {
+  0% {
+  }
+  100% {
+    height: 15rem;
+    /* width: 10rem; */
+    font-size: 1.2rem;
+  }
+}
+
+.card-info-animation .card-textarea {
+  animation: textarea 0.8s forwards;
+  position: absolute;
+}
+@keyframes textarea {
+  0% {
+    right: -10rem;
+    transform: rotate(0deg);
+  }
+  25% {
+    /* transform: translate(-20px, 50px); */
+    /* transform: rotate(-45deg) */
+  }
+  100% {
+    top: -23rem;
+    right: -12rem;
+    transform: rotate(-90deg);
+    /* text-align: justify; */
+    /* writing-mode: vertical-rl; */
+    /* rotate: calc(180deg); */
+  }
+}
 
 .inactive .card-info-area .card-textarea {
   writing-mode: vertical-rl;
