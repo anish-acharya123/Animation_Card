@@ -47,9 +47,9 @@ for (let card of cards) {
       BeforeInactiveBtn.classList.add("card-btn-animation");
 
       currentActiveBg.classList.remove("bg-none");
-      currentActiveBg.classList.add("bg-overlay");
-
       nextActiveBg.classList.remove("bg-none");
+
+      currentActiveBg.classList.add("bg-overlay");
       nextActiveBg.classList.add("bg-overlay-active");
 
       activeCard.classList.remove("active");
@@ -62,15 +62,12 @@ for (let card of cards) {
       activeCard = card;
     }
 
-  
     setTimeout(() => {
       currentActiveBg.classList.remove("bg-overlay");
       currentActiveBg.classList.add("bg-none");
 
       nextActiveBg.classList.remove("bg-overlay-active");
       nextActiveBg.classList.add("bg-none");
-
-   
 
       activeCardTool.classList.remove("transition-left-out");
       nextActiveCardTool.classList.remove("transition-left-in");
